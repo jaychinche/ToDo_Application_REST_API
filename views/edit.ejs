@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit ToDo</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            color: rgb(159, 74, 14);
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid rgb(220, 243, 45);
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        button {
+            background-color: rgb(220, 243, 45);
+            font-size: larger;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Your ToDo</h2>
+    <form method="post" action="/todoapp/<%= post.id %>?_method=PATCH">
+        <textarea rows="3" name="content"><%= post.content %></textarea><br><br>
+        <button>OK</button>
+    </form>
+</body>
+</html>

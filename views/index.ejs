@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo Application</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #3498db;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        h2 {
+            color: #3498db;
+            text-align: center;
+        }
+
+        .todo-item {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .todo-content {
+            flex-grow: 1;
+        }
+
+        .todo-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .edit-link,
+        .delete-btn {
+            text-decoration: none;
+            color: #3498db;
+            cursor: pointer;
+        }
+
+        .edit-link:hover,
+        .delete-btn:hover {
+            text-decoration: underline;
+        }
+
+        .create-btn {
+            background-color: #2ecc71;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: larger;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>ToDo Application</h1>
+    </header>
+
+    <main>
+        <h2>Your To-Do List</h2>
+
+        <% for(todo of arraypost) { %>
+            <div class="todo-item">
+                <div class="todo-content">
+                    <%= todo.content %>
+                </div>
+                <div class="todo-actions">
+                    <a class="edit-link" href="http://localhost:4001/todoapp/<%= todo.id %>/edit">Edit</a>
+                    <form method="post" action="http://localhost:4001/todoapp/<%= todo.id %>?_method=DELETE">
+                        <button class="delete-btn" type="submit">Delete</button>
+                    </form>
+                </div>
+            </div>
+        <% } %>
+
+        <form method="post" action="todoapp/create">
+            <button class="create-btn">Create ToDo</button>
+        </form>
+    </main>
+</body>
+</html>
